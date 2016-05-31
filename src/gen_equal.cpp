@@ -3,9 +3,16 @@
 #include <math.h>
 #include <cstdlib>
 #include <stdio.h>
+#include <iostream>
 
 #ifndef EXP_BITS_SIZE
 #define EXP_BITS_SIZE 10
+#endif
+
+#ifdef FLOAT_NUMBERS
+#define generate_number() (rand() / (float)RAND_MAX) * (float)(rand() % (int)pow(2, EXP_BITS_SIZE));
+#else
+#define generate_number() (rand() % bits_size_elements);
 #endif
 
 void segments_gen(int num_segments, int size_segment) {
@@ -16,7 +23,8 @@ void segments_gen(int num_segments, int size_segment) {
 void vectors_gen(int num_elements, int bits_size_elements) {
 	for (int i = 0; i < num_elements; i++)
 	{
-		printf("%d ", rand() % bits_size_elements);
+		std::cout << generate_number();
+		std::cout << " ";
 	}
 }
 

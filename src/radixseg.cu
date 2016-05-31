@@ -51,7 +51,8 @@ void cudaTest(cudaError_t error) {
 	}
 }
 
-void print(int* host_data, int n) {
+template <typename T>
+void print(T* host_data, int n) {
 	std::cout << "\n";
 	for (int i = 0; i < n; i++) {
 		std::cout << host_data[i] << " ";
@@ -82,10 +83,10 @@ int main(int argc, char** argv) {
 
 	scanf("%d", &num_of_elements);
 	int mem_size_vec = sizeof(int) * num_of_elements;
-	int *h_vec = (int *) malloc(mem_size_vec);
+	float *h_vec = (float *) malloc(mem_size_vec);
 	int *h_value = (int *) malloc(mem_size_vec);
 	for (i = 0; i < num_of_elements; i++) {
-		scanf("%d", &h_vec[i]);
+		scanf("%f", &h_vec[i]);
 		h_value[i] = i;
 	}
 
